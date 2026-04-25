@@ -22,5 +22,6 @@ namespace Auth.Auth.DTOs
         [Required]
         [StringLength(8)]
         public string ConfPassword { get; set; }
+        public int Type { get; internal set; }
     }
 }

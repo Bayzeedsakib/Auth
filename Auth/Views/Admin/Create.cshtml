@@ -1,0 +1,23 @@
+﻿@model Auth.Auth.DTOs.RegDto﻿
+<h2>Registration</h2>
+<form method="post">
+    <input type="text" name="Name" value="@Model.Name" placeholder="Name" class="form-control" />
+    <span class="text-danger">@Html.ValidationMessage("Name")</span>
+    <input type="text" name="Username" value="@Model.Username" placeholder="Username" class="form-control" />
+    <span class="text-danger">@Html.ValidationMessage("Username")</span>
+    <input type="text" name="Email" value="@Model.Email" placeholder="Email" class="form-control" />
+    <span class="text-danger">@Html.ValidationMessage("Email")</span>
+    <input type="password" name="Password" placeholder="Password" class="form-control" />
+    <span class="text-danger">@Html.ValidationMessage("Password")</span>
+    <input type="password" name="ConfPassword" placeholder="Confirm Password" class="form-control" />
+    <span class="text-danger">@Html.ValidationMessage("ConfPassword")</span>
+    <select asp-for="Type" class="form-control">
+        <option disabled selected>--Select User Type--</option>
+        @foreach (var item in ViewBag.Types)
+        {
+            <option value="@item.Id"> @item.Name</option>
+        }
+    </select>
+    <br />
+    <input type="submit" value="Register" class="btn btn-primary" />
+</form>
