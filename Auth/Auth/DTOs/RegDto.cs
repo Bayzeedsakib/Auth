@@ -13,6 +13,7 @@ namespace Auth.Auth.DTOs
 
         [Required]
         [StringLength(10,MinimumLength =4)]
+        
         public string Username { get; set; }
 
         [Required]
@@ -22,6 +23,6 @@ namespace Auth.Auth.DTOs
         [Required]
         [StringLength(8)]
         public string ConfPassword { get; set; }
-        public int Type { get; internal set; }
+        public int Type { get; set; }
     }
 }

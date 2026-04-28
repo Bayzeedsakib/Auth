@@ -1,0 +1,11 @@
+﻿@{
+
+}
+
+@if (TempData["Msg"] != null)
+{
+
+    <span class="alert alert-@TempData["Class"]">@TempData["Msg"]</span><br /><br />
+}
+
+<a class="btn btn-primary" href="/student/create">Create User</a>

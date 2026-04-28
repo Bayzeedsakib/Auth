@@ -5,25 +5,20 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Auth.Auth.Controllers
 {
-    public class AdminController : Controller
+    public class StudentController : Controller
     {
         AuthBSp26Context db;
-        public AdminController(AuthBSp26Context db)
+        public StudentController(AuthBSp26Context db)
         {
             this.db = db;
-        }
-
-        public IActionResult Dashboard()
-        {
-            return View();
         }
 
         [HttpGet]
         public IActionResult Create()
         {
-            var types = db.UserTypes.ToList();
+            var types = db.Users.ToList();
             ViewBag.Types = types;
-            return View(new RegDto { });
+            return View(new RegDto{ });
         }
 
         [HttpPost]
@@ -37,13 +32,15 @@ namespace Auth.Auth.Controllers
                     Email = obj.Email,
                     Password = obj.Password,
                     Username = obj.Username,
-                    Type = obj.Type,
+                    Type = obj.Type
                 };
+
                 db.Users.Add(u);
                 db.SaveChanges();
-                TempData["Msg"] = "Admin created successfully";
+                TempData["Msg"] = "Student form submitted successfully";
                 return RedirectToAction("Dashboard");
             }
+
             var types = db.UserTypes.ToList();
             ViewBag.Types = types;
             return View(obj);
